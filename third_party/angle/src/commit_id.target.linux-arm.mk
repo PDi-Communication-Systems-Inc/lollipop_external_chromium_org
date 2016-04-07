@@ -21,7 +21,8 @@ $(gyp_shared_intermediate_dir)/angle/id/commit.h: gyp_var_prefix := $(GYP_VAR_PR
 $(gyp_shared_intermediate_dir)/angle/id/commit.h: gyp_intermediate_dir := $(abspath $(gyp_intermediate_dir))
 $(gyp_shared_intermediate_dir)/angle/id/commit.h: gyp_shared_intermediate_dir := $(abspath $(gyp_shared_intermediate_dir))
 $(gyp_shared_intermediate_dir)/angle/id/commit.h: export PATH := $(subst $(ANDROID_BUILD_PATHS),,$(PATH))
-$(gyp_shared_intermediate_dir)/angle/id/commit.h: $(gyp_shared_intermediate_dir)/angle/commit_id.py $(LOCAL_PATH)/third_party/angle/.git/index $(GYP_TARGET_DEPENDENCIES)
+$(gyp_shared_intermediate_dir)/angle/id/commit.h: $(gyp_shared_intermediate_dir)/angle/commit_id.py 
+#$(LOCAL_PATH)/third_party/angle/.git/index $(GYP_TARGET_DEPENDENCIES)
 	@echo "Gyp action: Generating ANGLE Commit ID ($@)"
 	$(hide)cd $(gyp_local_path)/third_party/angle/src; mkdir -p $(gyp_shared_intermediate_dir)/angle/id; python "$(gyp_shared_intermediate_dir)/angle/commit_id.py" gen ../../../third_party/angle "$(gyp_shared_intermediate_dir)/angle/id/commit.h"
 
